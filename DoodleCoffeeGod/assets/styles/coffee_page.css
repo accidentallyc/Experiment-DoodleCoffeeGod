@@ -1,0 +1,28 @@
+body{
+    background-size: cover;
+    background-repeat:no-repeat;
+    background-position: center;
+}
+
+.coffee-details{
+    color:#000;
+    background: url( /images/green_cup/green_cup.png );
+    padding:1em;
+    border-radius:4px;
+    display:block;
+    width:25%;
+    min-width:300px;
+    margin: 2em 2em auto auto;
+    text-align: right;
+    box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22), 0 25px 55px 0 rgba(0, 0, 0, 0.21);
+}
+
+.coffee-details h1{
+    padding-right:0.3em;
+    padding-bottom: 0.5em;
+    border-bottom: thin solid gray;
+}
+
+.coffee-details p{
+    text-align:justify;
+}
