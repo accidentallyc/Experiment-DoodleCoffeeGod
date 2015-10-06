@@ -2,6 +2,8 @@
 
 a [Sails](http://sailsjs.org) application
 
+This is an app/game based on the game Doodle God.
+
 #Initial Commit on 10/1/2015
 
 Made for MedSpecialized
