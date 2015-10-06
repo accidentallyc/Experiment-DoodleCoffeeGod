@@ -1,29 +1,53 @@
-var doodleCoffeeGod = require("DoodleCoffeeGod/DoodleCoffeeGod")
+
+var DCG_PATH = "../../dcg/"
 module.exports = {
   installScript: function (req, res) {
-    doodleCoffeeGod.install()
-    return res.send("The database entries have been re-added");
+    var what = req.param('what')
+    var installer = require(DCG_PATH + "Installer")
+    if( what in installer ){
+        installer[ what ]() 
+        res.send("The database entries have been re-added"); 
+    } else{
+        res.send("What are you trying to do?");
+    }
   },
 
-  test: function(req,res){
-    var Coffee = require("DoodleCoffeeGod/Coffee")
-    Coffee.findById(1, function(coffee){
-        return res.json(coffee)
-    })
-    
-  },
-
-
-  renderCoffeePage: function (req, res) {
-    var Coffee = require("DoodleCoffeeGod/Coffee")
+  renderItemPage: function (req, res) {
+    var Item = require(DCG_PATH + "Item")
     var name = req.param('name')
 
-    Coffee.findByName(name, function(coffee){
+    var getAllDetails = true
+    Item.findByName(name, function(item){
         var args = {
-            coffee: coffee
+            item: item
         }
-        console.log(coffee)
-        return res.view('coffee_page',args)
-    })  
+        console.log(args)
+        
+        return res.view('item_details',args)
+    },getAllDetails)  
+  },
+  
+  renderCanvasPage: function(req,res){
+    var Item = require(DCG_PATH + "Item")
+    var requirements = []
+    Item.findByRequirements(requirements, function(items){
+      var args = {
+        items:items
+      }
+
+      return res.view('app',args)
+    })
+  },
+
+  findByRequirements: function(req,res){
+    var Item = require(DCG_PATH + "Item")
+    var requirements = req.param("requirements")
+    Item.findByRequirements(requirements, function(items){
+      var args = {
+        items:items
+      }
+      
+      return res.json(args)
+    })
   }
-};
+}

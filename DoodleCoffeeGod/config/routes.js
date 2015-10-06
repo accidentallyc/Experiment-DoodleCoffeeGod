@@ -32,21 +32,26 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': {
-    view: 'homepage',
-  },
-  '/coffee/:name': {
+  '/' : {view:'homepage'},
+  '/cheat-sheet' : {view:'cheat-sheet'},
+
+  '/canvas': {
     controller: 'DefaultController',
-    action :'renderCoffeePage'
+    action :'renderCanvasPage'
   },
-  '/install':{
+   '/canvas/check': {
+    controller: 'DefaultController',
+    action :'findByRequirements'
+  },
+  '/item/:name': {
+    controller: 'DefaultController',
+    action :'renderItemPage'
+  },
+  '/install/:what':{
     controller: 'DefaultController',
     action :'installScript'
   },
-   '/test':{
-    controller: 'DefaultController',
-    action :'test'
-  },
+
 
   /***************************************************************************
   *                                                                          *

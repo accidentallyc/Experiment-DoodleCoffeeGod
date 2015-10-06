@@ -1,0 +1,59 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="/styles/app.style.css" />
+<script src="/js/jquery-1.11.3.min.js"></script>
+<script src="/js/app.style.js"></script>
+<script src="/js/block-ui.js"></script>
+    <title>Coffee God | Canvas </title>
+</head>
+
+<style>
+.preLoad {
+	background: url( /images/loading.gif) 100%;
+}
+
+.preLoad > * {
+	opacity : 0;
+}
+</style>
+
+<body class="preLoad" >
+
+<a href="http://localhost:1337/cheat-sheet" target="_blank" id="cheat-sheet">Cheat Sheet</a>
+
+
+
+
+
+<% containers = ["left-couldron","right-couldron"] %>
+<% for( var y=0; y<containers.length;y++){ container = containers[y] %>
+<div class="ingredient-container" data-target="#<%= container %>">
+	<% for(var x=0,item;x<items.length;x++ ){ item=items[x] %>
+
+		<div class="ingredient" 
+			id="item_<%= item.id %>" 
+			data-id="<%= item.id %>" 
+			data-name="<%= item.name %>">
+				<img src="<%= item.thumb %>"/>
+		</div>
+	<% }%>
+</div>
+
+
+<div class="ingredient couldron" id="<%= container %>">
+	<img src="/images/no_ingredient_thumb.gif" />
+	
+</div>
+<% } %>
+
+<div class="ingredient couldron" id="result-couldron">
+	<img src="/images/coffee_god.gif" class="idle"/>
+	<img src="/images/loading.gif" class="loading"/>
+</div>
+
+
+
+
+
+</body>	
+</html>

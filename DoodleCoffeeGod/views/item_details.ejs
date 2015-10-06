@@ -1,0 +1,18 @@
+<html>
+<head>
+    <title>Doodle Coffee God | <%= item.name %></title>
+    <link rel="stylesheet" href="/styles/coffee_page.css">
+</head>
+<body style="background-image:url( <%= item.img%>)">
+    <% if( item.name ){ %>
+    <div class="coffee-details">
+        <h1><%= item.name %></h1>
+        <p><%= item.descp %></p>
+    </div>
+    <% } else { %>
+        Sorry! This coffee|ingredient doesn't exist! 
+    <% } %>
+</body>
+</html>
+
+
